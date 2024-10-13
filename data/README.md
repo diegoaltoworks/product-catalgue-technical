@@ -9,6 +9,7 @@ We want you to build a full-stack app using the requirements below and attach a 
 We encourage you to spend no more than 3 hours on this test.
 
 ## Requirements
+
 - Use nodejs and typescript
 - Create a UI for uploading the CSV and performing the above mentioned operations
 - Create an backend for handling persistence

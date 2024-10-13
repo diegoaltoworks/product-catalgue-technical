@@ -1,24 +1,24 @@
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-
 async function main() {
-  // ... you will write your Prisma Client queries here
-  const stores = await prisma.store.findMany();
-  console.log({ stores });
-  if (stores.length) return;
-  console.log("Create stores", { stores });
-  await prisma.store.create({
-    data: { name: "Store A" },
-  });
+  // reset
+  await prisma.store.deleteMany();
 
-  await prisma.store.create({
-    data: { name: "Store B" },
-  });
+  const oldStores = await prisma.store.findMany();
+  if (oldStores.length) return;
+  console.log("oldStores", { oldStores });
 
-  await prisma.store.create({
-    data: { name: "Store C" },
-  });
+  await prisma.store.create({ data: { id: "KEN", name: "Kensington" } });
+  await prisma.store.create({ data: { id: "BAT", name: "Battersea" } });
+  await prisma.store.create({ data: { id: "HAM", name: "Hampstead" } });
+  await prisma.store.create({ data: { id: "WIM", name: "Wimbledon" } });
+  await prisma.store.create({ data: { id: "CHE", name: "Chelsea" } });
+
+  const newStores = await prisma.store.findMany();
+  console.log({ newStores });
+  if (newStores.length) return;
+  console.log("newStores", { newStores });
 }
 
 main()

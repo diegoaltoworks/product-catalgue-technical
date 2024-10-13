@@ -4,20 +4,26 @@
   "main": "index.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --watch src --exec ts-node index.ts",
+    "dev": "nodemon",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "build": "yarn install && tsc",
     "start": "NODE_ENV=production node dist/index.js",
-    "db:update": "prisma db push"
+    "db:update": "prisma db push",
+    "postinstall": "echo prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^4.10.0",
+    "@prisma/client": "^4.16.2",
     "@trpc/server": "^10.10.0",
     "axios": "^1.3.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
+    "prisma": "^5.20.0",
+    "supertest": "^7.0.0",
     "trpc-playground": "^1.0.4",
+    "winston": "^3.15.0",
     "zod": "^3.20.2"
   },
   "devDependencies": {

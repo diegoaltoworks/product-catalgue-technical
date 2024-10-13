@@ -7,9 +7,12 @@ export const createContext = async ({ req, res }: trpcExpress.CreateExpressConte
     req,
     res,
   };
-}; // context
+};
+
 type Context = inferAsyncReturnType<typeof createContext>;
 const t = initTRPC.context<Context>().create(); // initialize trpc (must be done once)
+
+// TODO: Add real authentication checks
 // Reusable middleware that checks if users are authenticated.
 const isAuthenticated = t.middleware(async ({ next, ctx }) => {
   const isLoggedIn = true;
@@ -23,9 +26,11 @@ const isAuthenticated = t.middleware(async ({ next, ctx }) => {
       },
     });
   } else {
-    throw new TRPCError({ code: "BAD_REQUEST", message: "Not authorized" });
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Not authorized" });
   }
 });
+
 export const router = t.router;
 export const publicProcedure = t.procedure;
 export const privateProcedure = t.procedure.use(isAuthenticated);
+export const createCallerFactory = t.createCallerFactory;

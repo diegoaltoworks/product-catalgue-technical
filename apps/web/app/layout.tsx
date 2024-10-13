@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { TrpcProvider } from '@/utils/trpc-provider';
-
+import { TrpcProvider } from "~/utils/trpc-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,14 +19,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  header,
+  footer,
+}: {
   children: React.ReactNode;
-}>) {
+  header: React.ReactNode;
+  footer: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <TrpcProvider>
-        {children}
+          <div className="flex min-h-screen">
+            <div className="flex flex-col flex-grow">
+              <header className="bg-gray-800 text-white p-4">{header}</header>
+              <main className="flex-grow p-4">{children}</main>
+              <footer className="bg-gray-800 text-white p-4">{footer}</footer>
+            </div>
+          </div>
         </TrpcProvider>
       </body>
     </html>
