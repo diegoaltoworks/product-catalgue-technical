@@ -64,7 +64,7 @@ export default function Upload() {
               <pre>
                 <code>{JSON.stringify(product, null, 2)}</code>
               </pre>
-              <Button onClick={(()=>alert("TODO!"))}>Edit and Retry</Button>
+              <Button onClick={() => alert("TODO!")}>Edit and Retry</Button>
             </div>
           ))}
         </div>

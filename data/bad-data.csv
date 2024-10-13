@@ -1,0 +1,5 @@
+quantity,sku,description,store
+8,UK-1011,Good item,KEN
+6,UK-1012,Bad Item,XXX
+6,,,KEN
+8,UK-1011,Good item,KEN
