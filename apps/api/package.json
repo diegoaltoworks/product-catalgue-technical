@@ -10,7 +10,7 @@
     "build": "yarn install && tsc",
     "start": "NODE_ENV=production node dist/index.js",
     "db:update": "prisma db push",
-    "postinstall": "echo prisma generate"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^4.16.2",
