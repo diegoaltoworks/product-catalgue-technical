@@ -1,5 +1,5 @@
 quantity,sku,description,store
-8,UK-1011,Good item,KEN
-6,UK-1012,Bad Item,XXX
+8,UK-1011,Good item Kensington,KEN
+6,UK-1012,Bad Item Invalid Store,XXX
 6,,,KEN
-8,UK-1011,Good item,KEN
+8,UK-1011,Good item Wimbledon,WIM
